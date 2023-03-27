@@ -1,6 +1,6 @@
 # Search Engine Pipeline
 
-This repository contains a search engine pipeline using PySpark, MongoDB, and Airflow. The pipeline fetches product data from the ASOS API, stores the data in Google Cloud Storage (GCS) and loads the data into MongoDB. The pipeline also computes embeddings for the products using sentence transformer model, calculate cosine similarity score and calculates BM25 scores to rank the top 10 items.
+This repository contains a search engine pipeline using PySpark, MongoDB, and Airflow. The pipeline fetches product data from the ASOS API, stores the data in Google Cloud Storage (GCS) and loads the data into MongoDB. The pipeline also computes embeddings for the products using sentence transformer model, calculate cosine similarity score and calculates BM25 scores to rank the top n items.
 
 ## Architecture
 <p align="center">
@@ -24,6 +24,7 @@ This repository contains a search engine pipeline using PySpark, MongoDB, and Ai
 - MongoDB 4.2 or later
 - Airflow 2.0.0 or later
 - Google Cloud Storage
+- sentence-transformers 2.2.2 or later
 
 ### Installation
 
@@ -48,8 +49,8 @@ The repository contains the following files and directories:
     - `inverted_index.py`: Creates an inverted index of products for calculating BM25 scores
     - `environment.yml`: A yaml file containing all the requirements for the project
 - `model/`: Model for calculating BM25 scores
-    - `bm25.py`: Calculates BM25 scores and ranks the top 10 items
-    - `BERT.py`: Computes embeddings and calculates cosine similarity score and ranks the top 10 items
+    - `bm25.py`: Calculates BM25 scores and ranks the top n items
+    - `BERT.py`: Computes embeddings and calculates cosine similarity score and ranks the top n items
 - `dag/`: Airflow DAG for orchestrating the pipeline
     - `search_engine_dag.py`: Defines the DAG and tasks for the search engine pipeline
 
